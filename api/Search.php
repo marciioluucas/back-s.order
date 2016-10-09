@@ -48,6 +48,16 @@ class Search
 ";
         }
     }
+
+    function doItProduto()
+    {
+
+    }
+
+    function doItPedido()
+    {
+
+    }
 }
 
 new Search();

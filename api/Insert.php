@@ -17,26 +17,43 @@ header('Access-Control-Allow-Methods: GET, POST, PUT');
 class Insert
 {
     private $usuarioController;
+    private $produtoController;
+    private $pedidoController;
 
 
     function __construct()
     {
 
 
-        $this->usuarioController = new UsuarioController();
-
-
         if (isset($_POST['q']) && $_POST['q'] == "usuario") {
             echo $this->doItUsuario();
         }
 
+        if (isset($_POST['q']) && $_POST['q'] == "produto") {
 
+        }
+
+        if (isset($_POST['q']) && $_POST['q'] == "pedido") {
+
+        }
     }
 
     function doItUsuario()
     {
+        $this->usuarioController = new UsuarioController();
         return $this->usuarioController->cadastrar();
     }
+
+    function doItProduto()
+    {
+
+    }
+
+    function doItPedido()
+    {
+
+    }
+
 
 }
 

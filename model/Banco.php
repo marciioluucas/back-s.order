@@ -31,7 +31,7 @@ class Banco
     private function conexao()
     {
         $this->host = "localhost";
-        $this->banco = "bd_sorteio";
+        $this->banco = "bd_sorder";
         $this->usuario = "root";
         $this->senha = "";
         $this->link = mysqli_connect($this->host, $this->usuario, $this->senha, $this->banco);
@@ -70,7 +70,6 @@ class Banco
 
         } else {
             return json_encode(array('msg' => 'Erro! cadastrar(), Banco.php'));
-
         }
 
     }

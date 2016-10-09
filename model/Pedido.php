@@ -95,9 +95,9 @@ class Pedido extends Banco
         $this->alterar($sql);
     }
 
-    function excluirPedido()
+    function cancelarPedido()
     {
-        $this->excluir("update usuario set ativado = 0");
+        $this->excluir("update pedido set ativado = 0");
     }
 
     function listarPedido($filter, $filterValue)
