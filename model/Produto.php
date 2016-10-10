@@ -80,10 +80,10 @@ class Produto extends Banco
 
     function cadastrarProduto()
     {
-
-        $produtoID = $this->cadastrar("insert into produto (nome) values ('" . $this->nome . "')");
-        $this->cadastrar("insert into propriedades_produto (tamanho, preco, produto_id)
-                        values ('$this->tamanho', '$this->preco', ".$produtoID.")");
+//        $produtoID =
+//        $this->cadastrar("insert into propriedades_produto (tamanho, preco, produto_id)
+//                        values ('$this->tamanho', '$this->preco', ".$produtoID.")");
+        return $this->cadastrar("insert into produto (nome) values ('" . $this->nome . "')");
     }
 
 }
