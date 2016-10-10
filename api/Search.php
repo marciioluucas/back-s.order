@@ -1,6 +1,7 @@
 <?php
 require_once '../model/Banco.php';
 require_once '../model/Usuario.php';
+require_once '../model/Produto.php';
 
 /**
  * Created by PhpStorm.
@@ -12,6 +13,7 @@ require_once '../model/Usuario.php';
 class Search
 {
     private $usuario;
+    private $produto;
 
 
     function __construct()
@@ -22,6 +24,11 @@ class Search
         if (isset($_GET['q']) && $_GET['q'] == "usuario") {
 
             echo $this->doItUsuario();
+        }
+
+        if (isset($_GET['q']) && $_GET['q'] == "produto") {
+
+            echo $this->doItProduto();
         }
 
 
@@ -51,7 +58,21 @@ class Search
 
     function doItProduto()
     {
-
+        $this->produto = new Produto();
+        if (isset($_GET['filtro']) && isset($_GET['valorFiltro'])) {
+            $this->produto->tabela = "produto";
+            return $this->produto->listarProduto($_GET['filtro'], $_GET['valorFiltro']);
+        } else {
+            return
+                "
+{
+  \"api\": {
+     \"erro\":\"API-SEARCH 001 | Produto:\",
+     \"msg\":\"Não informado qual metodo a seguir.\"
+  }
+}
+";
+        }
     }
 
     function doItPedido()

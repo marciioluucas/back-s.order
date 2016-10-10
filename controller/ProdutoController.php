@@ -31,4 +31,8 @@ class ProdutoController
             $this->propriedadesProduto->cadastrarPropriedadesProduto();
         }
     }
+
+    public function listar() {
+
+    }
 }
