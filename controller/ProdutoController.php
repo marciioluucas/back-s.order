@@ -15,10 +15,12 @@ class ProdutoController
         $this->produto = new Produto();
         if ($_POST['nome'] && $_POST['tamanho'] && $_POST['preco']) {
             $this->produto->setNome($_POST['nome']);
+
+
+
+            $this->produto->cadastrarProduto();
             $this->produto->setTamanho($_POST['tamanho']);
             $this->produto->setPreco($_POST['preco']);
-
-            return $this->produto->cadastrarProduto();
         } else {
             return "
       {
