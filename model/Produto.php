@@ -7,7 +7,7 @@
  * Date: 04/10/2016
  * Time: 15:56
  */
-class Produto
+class Produto extends Banco
 {
     private $id;
     private $nome;
@@ -78,6 +78,12 @@ class Produto
         $this->preco = $preco;
     }
 
+    function cadastrarProduto()
+    {
 
+        $produtoID = $this->cadastrar("insert into produto (nome) values ('" . $this->nome . "')");
+        $this->cadastrar("insert into propriedades_produto (tamanho, preco, produto_id)
+                        values ('$this->tamanho', '$this->preco', ".$produtoID.")");
+    }
 
 }

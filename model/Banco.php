@@ -21,6 +21,7 @@ class Banco
     public $valores;
     public $condicao;
     private $link;
+    public $retornoFunc;
 
     public function __construct()
     {
@@ -64,7 +65,7 @@ class Banco
     {
         if ($this->typeSQL($sql)) {
             http_response_code(200);
-
+            $this->retornoFunc = mysqli_insert_id($this->link);
             return json_encode(array('msg' => 'Cadastro efetuado com sucesso!',
                 'id_cadastrado' => mysqli_insert_id($this->link)));
 
