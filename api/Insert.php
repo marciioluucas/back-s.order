@@ -1,5 +1,6 @@
 <?php
 require_once '../controller/UsuarioController.php';
+require_once '../controller/ProdutoController.php';
 
 /**
  * Created by PhpStorm.
@@ -30,7 +31,7 @@ class Insert
         }
 
         if (isset($_POST['q']) && $_POST['q'] == "produto") {
-
+            echo $this->doItProduto();
         }
 
         if (isset($_POST['q']) && $_POST['q'] == "pedido") {
@@ -46,7 +47,8 @@ class Insert
 
     function doItProduto()
     {
-
+        $this->produtoController = new ProdutoController();
+        return $this->produtoController->cadastrar();
     }
 
     function doItPedido()

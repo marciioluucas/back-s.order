@@ -1,5 +1,7 @@
 <?php
 include_once '../model/Produto.php';
+include_once '../model/PropriedadesProduto.php';
+
 /**
  * Created by PhpStorm.
  * User: Marcio
@@ -9,30 +11,24 @@ include_once '../model/Produto.php';
 class ProdutoController
 {
     private $produto;
+    private $propriedadesProduto;
 
     public function cadastrar()
     {
+
         $this->produto = new Produto();
-        if ($_POST['nome'] && $_POST['tamanho'] && $_POST['preco']) {
-            $this->produto->setNome($_POST['nome']);
+        $this->propriedadesProduto = new PropriedadesProduto();
 
+        $this->produto->setNome($_POST['nome']);
 
+        $this->produto->cadastrarProduto();
+        $produtoIDCadastrado = $this->produto->retornoFunc;
 
-            $this->produto->cadastrarProduto();
-
-            $this->produto->setTamanho($_POST['tamanho']);
-            $this->produto->setPreco($_POST['preco']);
-        } else {
-            return "
-      {
-            \"erro\":{
-                \"classe\":\"UsuarioController\",
-                \"metodo\":\"cadastrar()\"
-            },
-            \"msg\": \"Não informado algum dos campos obrigatórios!\"
+        for ($i = 0; $i < count($_POST['tamanho']); $i++) {
+            $this->propriedadesProduto->setTamanho($_POST['tamanho'][$i]);
+            $this->propriedadesProduto->setPreco($_POST['preco'][$i]);
+            $this->propriedadesProduto->setIdProduto($produtoIDCadastrado);
+            $this->propriedadesProduto->cadastrarPropriedadesProduto();
         }
-        ";
-        }
-
     }
 }
