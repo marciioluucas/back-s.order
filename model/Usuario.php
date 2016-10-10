@@ -101,7 +101,12 @@ class Usuario extends Banco
 
     function cadastrarUsuario()
     {
-        return $this->cadastrar("insert into usuario (nome, email, senha) values ('" . $this->nome . "', '" . $this->email . "', '" . $this->senha . "')");
+
+        if($this->verificaExistente("id","usuario","email",$this->email)){
+            return json_encode(array("msg" => "Usuario ja existente!", "id_cadastrado" => 0));
+        }else{
+            return $this->cadastrar("insert into usuario (nome, email, senha) values ('" . $this->nome . "', '" . $this->email . "', '" . $this->senha . "')");
+        }
     }
 
     function alterarUsuario()

@@ -56,7 +56,6 @@ class Banco
 
         } else {
             return json_encode(array('msg' => 'Erro! cadastrar(), Banco.php'));
-
         }
 
     }
@@ -139,12 +138,18 @@ class Banco
         }
     }
 
-    public function verificaExistente($campoASerRetornado, $tabela, $colunaASerVerificada, $valorColunaASerVerificada) {
-        $this->sql = "SELECT ".$campoASerRetornado." FROM " . $tabela . " WHERE " . $colunaASerVerificada . "= " . $valorColunaASerVerificada . " order by id asc";
+
+    public function verificaExistente($campoASerRetornado, $tabela, $colunaASerVerificada, $valorColunaASerVerificada)
+    {
+        http_response_code(200);
+        $this->sql = "SELECT " . $campoASerRetornado . " FROM " . $tabela . " WHERE " . $colunaASerVerificada . " = '" . $valorColunaASerVerificada . "' order by id asc";
+//        echo $this->sql;
         $this->query = mysqli_query($this->conexao(), $this->sql);
         $this->result = mysqli_affected_rows($this->conexao());
-        if (mysqli_num_rows($this->query) > 0) {}else{
-
+        if (mysqli_num_rows($this->query) > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
