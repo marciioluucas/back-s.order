@@ -104,7 +104,7 @@ class Banco
         $this->result = mysqli_affected_rows($this->conexao());
         if (mysqli_num_rows($this->query) > 0) {
 //            echo "{\n";
-            echo "{\"usuario\" : [\n        ";
+            echo "{\"".$this->tabela."\" : [\n        ";
             $j = 1;
             while ($r = mysqli_fetch_array($this->query, MYSQLI_ASSOC)) {
                 echo "{\n          \n        ";

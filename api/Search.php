@@ -26,10 +26,16 @@ class Search
             echo $this->doItUsuario();
         }
 
-        if (isset($_GET['q']) && $_GET['q'] == "produto") {
+        if (isset($_GET['q']) && $_GET['q'] == "produto" && isset($_GET['typeSearch']) && $_GET['typeSearch'] == "precos-e-tamanhos") {
+
+            echo $this->doItProdutoPrecosETamanhos();
+        }
+
+        if (isset($_GET['q']) && $_GET['q'] == "produto" && !isset($_GET['typeSearch'])) {
 
             echo $this->doItProduto();
         }
+
 
 
     }
@@ -79,6 +85,13 @@ class Search
     {
 
     }
+
+    function doItProdutoPrecosETamanhos() {
+        $this->produto = new Produto();
+            return $this->produto->listarPropriedadesProduto($_GET['idProduto']);
+    }
+
+
 }
 
 new Search();

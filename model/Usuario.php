@@ -111,7 +111,7 @@ class Usuario extends Banco
 
     function alterarUsuario()
     {
-        $this->alterar("update usuario set nome = '$this->nome', email = '$this->email', senha = '$this->senha' ");
+        $this->alterar("update usuario set nome = '$this->nome', senha = '$this->senha' ");
     }
 
     function excluirUsuario()
