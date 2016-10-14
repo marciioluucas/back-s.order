@@ -34,6 +34,7 @@ class Search
         if (isset($_GET['q']) && $_GET['q'] == "produto" && !isset($_GET['typeSearch'])) {
 
             echo $this->doItProduto();
+
         }
 
 

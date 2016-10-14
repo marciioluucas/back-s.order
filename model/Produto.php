@@ -95,15 +95,21 @@ class Produto extends Banco
 
     function listarPropriedadesProduto($idProduto)
     {
-
+        $i = 1;
         $query = $this->typeSQL("select * from produto_has_propriedades_produto 
 inner join propriedades_produto on propriedades_produto_id = propriedades_produto.id where produto_id = $idProduto");
         echo "{\n    ";
         echo "\"tamanhos\" : [\n";
         $precos = "";
         while ($r = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-            echo "          \"" . $r['tamanho'] . "\",\n";
-            $precos .= "\"" . $r['preco'] . "\",\n       ";
+            if($i != mysqli_num_rows($query)){
+                echo "          \"" . $r['tamanho'] . "\",\n";
+                $precos .= "\"" . $r['preco'] . "\",\n       ";
+            }else{
+                echo "          \"" . $r['tamanho'] . "\"\n";
+                $precos .= "\"" . $r['preco'] . "\"\n       ";
+            }
+$i++;
         }
         echo "],\n";
         echo "   \"precos\" : [\n";
@@ -111,7 +117,7 @@ inner join propriedades_produto on propriedades_produto_id = propriedades_produt
 
         echo "       ".$precos;
 
-        echo "],\n";
+        echo "]\n";
         echo "}";
     }
 }
