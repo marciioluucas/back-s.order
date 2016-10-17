@@ -26,7 +26,9 @@ class Search
             echo $this->doItUsuario();
         }
 
-        if (isset($_GET['q']) && $_GET['q'] == "produto" && isset($_GET['typeSearch']) && $_GET['typeSearch'] == "precos-e-tamanhos") {
+        if (isset($_GET['q']) && $_GET['q'] == "produto" && isset($_GET['typeSearch']) &&
+            $_GET['typeSearch'] == "precos-e-tamanhos"
+        ) {
 
             echo $this->doItProdutoPrecosETamanhos();
         }
@@ -36,7 +38,6 @@ class Search
             echo $this->doItProduto();
 
         }
-
 
 
     }
@@ -87,9 +88,14 @@ class Search
 
     }
 
-    function doItProdutoPrecosETamanhos() {
+    function doItProdutoPrecosETamanhos()
+    {
         $this->produto = new Produto();
+//        if (isset($_GET['idProduto']) && $_GET['idProduto'] != 0) {
             return $this->produto->listarPropriedadesProduto($_GET['idProduto']);
+//        } else {
+//            return json_encode(array("tamanhos" => array("nenhum"), "precos" => array(0.00)));
+//        }
     }
 
 
