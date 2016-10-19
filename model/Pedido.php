@@ -9,10 +9,25 @@
  */
 class Pedido extends Banco
 {
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $nomeCliente;
+    /**
+     * @var
+     */
     private $isLevar;
+    /**
+     * @var
+     */
     private $isPronto;
+    /**
+     * @var
+     */
     private $idProdutos; //Array
 
     /**
@@ -80,6 +95,9 @@ class Pedido extends Banco
     }
 
 
+    /**
+     * @return string
+     */
     function cadastrarPedido()
     {
        return $this->cadastrar("insert into pedido (nome_cliente, is_levar) values ('" . $this->nomeCliente .
@@ -88,6 +106,9 @@ class Pedido extends Banco
 
     }
 
+    /**
+     *
+     */
     function alterarPedido()
     {
         $sql = "update pedido set nome_cliente = '$this->$this->nomeCliente', is_levar = '$this->islevar', is_pronto = '$this->isPronto'";
@@ -95,11 +116,18 @@ class Pedido extends Banco
         $this->alterar($sql);
     }
 
+    /**
+     *
+     */
     function cancelarPedido()
     {
         $this->excluir("update pedido set ativado = 0");
     }
 
+    /**
+     * @param $filter
+     * @param $filterValue
+     */
     function listarPedido($filter, $filterValue)
     {
         $this->campos = ["id", "nome", "email", "senha"];

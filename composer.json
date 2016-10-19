@@ -1,0 +1,16 @@
+{
+  "name": "Back-end do sorder",
+  "description": "Esta e parte do backend, uma API para o Angular2",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Márcio Lucas",
+      "email": "marciioluucas@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.2.8",
+    "phpdocumentor/phpdocumentor": "2.*"
+  }
+}

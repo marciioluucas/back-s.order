@@ -10,9 +10,21 @@ require_once 'Banco.php';
  */
 class Usuario extends Banco
 {
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $nome;
+    /**
+     * @var
+     */
     private $email;
+    /**
+     * @var
+     */
     private $senha;
 
     /**
@@ -79,6 +91,11 @@ class Usuario extends Banco
         return $this->senha = $senha;
     }
 
+    /**
+     * @param $email
+     * @param $senha
+     * @return string
+     */
     function logarUsuario($email, $senha)
     {
         if ($this->email == $email && $this->senha == $senha) {
@@ -99,6 +116,9 @@ class Usuario extends Banco
         }
     }
 
+    /**
+     * @return string
+     */
     function cadastrarUsuario()
     {
 
@@ -109,16 +129,26 @@ class Usuario extends Banco
         }
     }
 
+    /**
+     *
+     */
     function alterarUsuario()
     {
         $this->alterar("update usuario set nome = '$this->nome', senha = '$this->senha' ");
     }
 
+    /**
+     *
+     */
     function excluirUsuario()
     {
         $this->excluir("update usuario set ativado = 0");
     }
 
+    /**
+     * @param $filter
+     * @param $filterValue
+     */
     function listarUsuario($filter, $filterValue)
     {
         $this->campos = ["id", "nome", "email", "senha"];

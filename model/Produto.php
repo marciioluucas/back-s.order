@@ -9,9 +9,21 @@
  */
 class Produto extends Banco
 {
+    /**
+     * @var
+     */
     private $id;
+    /**
+     * @var
+     */
     private $nome;
+    /**
+     * @var
+     */
     private $tamanho;
+    /**
+     * @var
+     */
     private $preco;
 
     /**
@@ -78,6 +90,9 @@ class Produto extends Banco
         $this->preco = $preco;
     }
 
+    /**
+     * @return string
+     */
     function cadastrarProduto()
     {
         if ($this->verificaExistente("id", "produto", "nome", $this->nome)) {
@@ -87,12 +102,19 @@ class Produto extends Banco
         }
     }
 
+    /**
+     * @param $filter
+     * @param $filterValue
+     */
     function listarProduto($filter, $filterValue)
     {
         $this->campos = ["id", "nome"];
         return $this->listar($filter, $filterValue);
     }
 
+    /**
+     * @param $idProduto
+     */
     function listarPropriedadesProduto($idProduto)
     {
         $i = 1;

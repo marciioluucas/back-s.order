@@ -9,8 +9,17 @@
  */
 class PropriedadesProduto extends  Banco
 {
+    /**
+     * @var
+     */
     private $idProduto;
+    /**
+     * @var
+     */
     private $tamanho;
+    /**
+     * @var
+     */
     private $preco;
 
     /**
@@ -61,6 +70,9 @@ class PropriedadesProduto extends  Banco
         $this->preco = $preco;
     }
 
+    /**
+     * @return string
+     */
     public function cadastrarPropriedadesProduto() {
        $this->cadastrar("insert into propriedades_produto (tamanho, preco) values ('".$this->tamanho."', '".$this->preco."')");
        return $this->cadastrar("insert into produto_has_propriedades_produto (propriedades_produto_id, produto_id) values ('".$this->retornoFunc."', '".$this->getIdProduto()."')");

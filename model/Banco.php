@@ -9,26 +9,71 @@
  */
 class Banco
 {
+    /**
+     * @var
+     */
     private $sql;
+    /**
+     * @var
+     */
     public $query;
+    /**
+     * @var
+     */
     public $result;
+    /**
+     * @var
+     */
     private $host;
+    /**
+     * @var
+     */
     private $usuario;
+    /**
+     * @var
+     */
     private $senha;
+    /**
+     * @var
+     */
     private $banco;
+    /**
+     * @var
+     */
     public $tabela;
+    /**
+     * @var
+     */
     public $campos;
+    /**
+     * @var
+     */
     public $valores;
+    /**
+     * @var
+     */
     public $condicao;
+    /**
+     * @var
+     */
     private $link;
+    /**
+     * @var
+     */
     public $retornoFunc;
 
+    /**
+     * Construtor da classe Banco .
+     */
     public function __construct()
     {
         $this->conexao();
 
     }
 
+    /**
+     * @return mysqli
+     */
     private function conexao()
     {
         $this->host = "localhost";
@@ -39,13 +84,19 @@ class Banco
         return $this->link;
     }
 
+    /**
+     * @param $sql
+     * @return bool|mysqli_result
+     */
     public function typeSQL($sql)
     {
-
         return mysqli_query($this->conexao(), $sql);
-
     }
 
+    /**
+     * @param $sql
+     * @return string
+     */
     public function cadastrar($sql)
     {
         if ($this->typeSQL($sql)) {
@@ -60,6 +111,10 @@ class Banco
 
     }
 
+    /**
+     * @param $sql
+     * @return string
+     */
     public function alterar($sql)
     {
         if ($this->typeSQL($sql)) {
@@ -71,9 +126,12 @@ class Banco
         } else {
             return json_encode(array('msg' => 'Erro! cadastrar(), Banco.php'));
         }
-
     }
 
+    /**
+     * @param $sql
+     * @return string
+     */
     public function excluir($sql)
     {
         if ($this->typeSQL($sql)) {
@@ -88,6 +146,10 @@ class Banco
 
     }
 
+    /**
+     * @param $filtro
+     * @param $valorFiltro
+     */
     public function listar($filtro, $valorFiltro)
     {
         $campos = "";
@@ -119,7 +181,6 @@ class Banco
                     } else {
                         echo " \n        ";
                     }
-
                 }
                 if (mysqli_num_rows($this->query) != $j) {
                     echo " },\n        ";
@@ -139,6 +200,13 @@ class Banco
     }
 
 
+    /**
+     * @param $campoASerRetornado
+     * @param $tabela
+     * @param $colunaASerVerificada
+     * @param $valorColunaASerVerificada
+     * @return bool
+     */
     public function verificaExistente($campoASerRetornado, $tabela, $colunaASerVerificada, $valorColunaASerVerificada)
     {
         http_response_code(200);
